@@ -1,0 +1,15 @@
+{
+  "name": "aksioma/vladimir",
+  "description": "My MVC Framework based on OOP",
+  "autoload": {
+    "psr-4": {
+      "app\\": "./"
+    }
+  },
+  "authors": [
+    {
+      "name": "Vladimir"
+    }
+  ],
+  "require": {}
+}
