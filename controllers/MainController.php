@@ -2,12 +2,17 @@
 
 namespace app\controllers;
 
-class MainController {
-    
-    public function home() {
-        echo 'home page';
+use app\core\Controller;
+
+class MainController extends Controller {
+
+    public function indexAction() {
+        echo 'index page';
     }
 
+    public function contactsAction() {
+        echo 'contacts page';
+    }
 }
 
 ?>

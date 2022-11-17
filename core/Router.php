@@ -13,8 +13,8 @@ class Router {
         $this -> currentUrl = new CurrentUrl($_SERVER["REQUEST_URI"]);
     }
 
-    public function get(string $route, string $controllerName) {
-        $this -> routes[$route] = $controllerName;
+    public function get(string $route, $controller, $action) {
+        $this -> routes[$route] = [$controller, $action];
     }
 
     public function resolve() {
@@ -25,9 +25,13 @@ class Router {
     }
 
     public function callController($path, $params) {
-        foreach ($this -> routes as $route => $controllerName) {
-            if ($route === $path) {
-                // TODO
+        foreach ($this -> routes as $route => $routeInfo) {
+            if ($path === $route) {
+                [$controllerName, $action] = $routeInfo;
+                $controller = new $controllerName();
+
+                $action = $action . "Action";
+                $controller -> $action();
             }
         }
     }

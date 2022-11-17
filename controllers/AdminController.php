@@ -1,9 +1,15 @@
 <?php
 
-namespace app\controller;
+namespace app\controllers;
 
-class AdminController {
+use app\core\Controller;
+
+class AdminController extends Controller {
     
+    public function indexAdminAction() {
+        echo 'index Admin Page';
+    }
+
 }
 
 ?>
