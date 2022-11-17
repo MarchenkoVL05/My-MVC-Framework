@@ -26,13 +26,13 @@ class Db {
 				$stmt -> bindValue(':' . $key, $val);
 			}
 		}
-		$stmt->execute();
-		return $stmt;
+		$stmt -> execute();
+        return $stmt;
 	}
 
     public function getAll($sql, $params = []) {
         $result = $this -> query($sql, $params);
-        $result -> fetchAll(PDO::FETCH_ASSOC);
+        $result = $result -> fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
