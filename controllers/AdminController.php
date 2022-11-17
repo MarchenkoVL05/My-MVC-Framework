@@ -7,7 +7,8 @@ use app\core\Controller;
 class AdminController extends Controller {
     
     public function indexAdminAction() {
-        $this -> view -> render('blackBG');
+        // Можно передавать ничего, либо тему + вью
+        $this -> view -> render('blackBG', 'admin');
     }
 
 }

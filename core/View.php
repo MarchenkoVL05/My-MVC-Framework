@@ -14,8 +14,13 @@ class View {
         $this -> viewName = $viewName;
     }
 
-    public function render($template = 'default') {
-        $this -> loadView($this -> viewName, $this -> params, $template);
+    public function render($template = "default", $view = "") {
+        // Если вью передано, то загружай её, иначе загрузи вью с таким же именем как у контроллера
+        if ($view) {
+            $this -> loadView($view, $this -> params, $template);
+        } else {
+            $this -> loadView($this -> viewName, $this -> params, $template);
+        }
     }
 
     
@@ -26,6 +31,7 @@ class View {
 
         $layoutPath = __DIR__ . "/../views/layouts/" . $template . ".php";
 
+        // Если переданный шаблон не существует, то загрузи дефолтный
         if (file_exists($layoutPath)) {
             include(__DIR__ . "/../views/layouts/" . $template . ".php");
         } else {
