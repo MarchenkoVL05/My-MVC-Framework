@@ -11,4 +11,10 @@
         echo $content;    
     ?>
 </body>
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+</style>
 </html>

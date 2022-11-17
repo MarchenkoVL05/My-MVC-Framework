@@ -7,7 +7,7 @@ use app\core\Controller;
 class AdminController extends Controller {
     
     public function indexAdminAction() {
-        echo 'index Admin Page';
+        $this -> view -> render('blackBG');
     }
 
 }

@@ -7,11 +7,11 @@ use app\core\Controller;
 class MainController extends Controller {
 
     public function indexAction() {
-        echo 'index page';
+        $this -> view -> render();
     }
 
     public function contactsAction() {
-        echo 'contacts page';
+        $this -> view -> render();
     }
 }
 

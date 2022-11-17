@@ -25,14 +25,36 @@ class Router {
     }
 
     public function callController($path, $params) {
-        foreach ($this -> routes as $route => $routeInfo) {
-            if ($path === $route) {
-                [$controllerName, $action] = $routeInfo;
-                $controller = new $controllerName();
+        $find = false;
 
-                $action = $action . "Action";
+        foreach ($this -> routes as $route => $routeInfo) {
+
+            if ($path === $route) {
+                $find = true;
+                [$controllerName, $action] = $routeInfo;
+
+                // vmName = view-model Name
+                $vmName = str_replace('app\controllers\\', '', $controllerName);
+                $vmName = str_replace('Controller', '', $vmName);
+                $vmName = strtolower($vmName);
+
+                if ($controllerName) {
+                    $controller = new $controllerName($vmName, $params);
+                } else {
+                    View::Error(404);
+                }
+
+                if ($action) {
+                    $action = $action . "Action";
+                } else {
+                    View::Error(404);
+                }
                 $controller -> $action();
             }
+        }
+
+        if (!$find) {
+            View::Error(404);
         }
     }
 }
