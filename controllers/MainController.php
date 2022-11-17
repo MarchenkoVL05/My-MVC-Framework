@@ -12,6 +12,8 @@ class MainController extends Controller {
 
     public function contactsAction() {
         $this -> view -> render();
+        $contacts = $this -> model -> getContacts();
+        print_r($contacts);
     }
 }
 
